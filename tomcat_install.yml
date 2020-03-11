@@ -18,6 +18,8 @@
         - name: starting tomat
           command: 
             cmd: /opt/tomcat/apache-tomcat-9.0.0.M10/bin/startup.sh
+
+
 #        - name: copying and hosting war file
 #          shell: cp /etc/ansible/petclinic/petclinic.war
           
