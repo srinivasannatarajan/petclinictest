@@ -1,0 +1,17 @@
+---
+   hosts: 192.168.56.102
+   become: true
+   tasks:
+#        name: install httpd
+#        yum:
+#          name: httpd
+#          state: present
+#        name: starting httpd
+#        yum:
+#          name: httpd
+#          state: restarted
+        name: installing petclinic
+        copy:
+                src: /opt/ansible/petclinic/petclinic.war
+                dest: /opt/tomcat/webapps
+ 

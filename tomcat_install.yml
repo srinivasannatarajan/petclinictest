@@ -1,0 +1,51 @@
+---
+ - name: tomcat
+   hosts: 192.168.56.102
+   tasks:
+        - name: create folder
+          file:
+            path: /opt/tomcat
+            state: directory
+            mode: 0755
+            
+        - name: downloading tomcat
+          get_url: url=https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.0.M10/bin/apache-tomcat-9.0.0.M10.tar.gz dest=/opt/
+        - name: unarchive
+          unarchive: 
+            src: /opt/apache-tomcat-9.0.0.M10.tar.gz 
+            dest: /opt/tomcat 
+            remote_src: yes
+        - name: starting tomat
+          command: 
+            cmd: /opt/tomcat/apache-tomcat-9.0.0.M10/bin/startup.sh
+#        - name: copying and hosting war file
+#          shell: cp /etc/ansible/petclinic/petclinic.war
+          
+
+
+
+
+#               - name: installing tomcat
+#                 yum:
+#                     name: tomcat
+#                     state: absent
+#               - name: installing tomcat-webapps
+#                 yum:
+#                     name: tomcat-webapps
+#                     state: absent
+  
+#               - name: restart tomcat
+#                 service:
+#                    name: tomcat
+#                     state: restarted
+#               - name: hosting petclinic
+#                 copy:
+#                     src: /var/lib/jenkins/workspace/Petclinic_package/target/petclinic.war
+#                     dest: /opt/tomcat/webapps
+#
+#               - name: downloading tomcat 
+#                 shell: wget http://apachemirror.wuchna.com/tomcat/tomcat-9/v9.0.26/bin/apache-tomcat-9.0.26.tar.gz -P
+#                 shell: tar zxvf /opt/apache-tomcat-9.0.26.tar.gz -C /opt/
+#                 shell: rm apache-tomcat-9.0.26.tar.gz
+#                 shell: mv *tomcat* tomcat
+#                 shell: ./opt/tomcat/startup.sh
